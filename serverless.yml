@@ -1,0 +1,22 @@
+service: portfolio-mailer
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stackName: ${self:service}-${self:provider.stage}
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'ap-southeast-2'}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - "execute-api:ManageConnections"
+      Resource:
+        - "arn:aws:execute-api:*:*:**/@connections/*"
+
+functions:
+  mailer:
+    handler: src/mailer.sender
+    events:
+      - http:
+          path: mail/send
+          method: POST
