@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/eaconde/portfolio-mailer#readme",
   "dependencies": {
-    "aws-sdk": "^2.569.0",
+    "aws-sdk": "^2.814.0",
     "dotenv": "^8.2.0"
   }
 }
